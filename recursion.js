@@ -1,5 +1,5 @@
 function fibs(number) {
-  let fibSequence = [];
+  const fibSequence = [];
   let firstNumber = 0;
   let secondNumber = 1;
   let sum = 0;
@@ -18,6 +18,11 @@ function fibs(number) {
 
 console.log(fibs(8));
 
-// function fibsRec(number) {
+function fibsRec(length, array = [0, 1]) {
+  if (length <= 2) return array;
+    else {
+      return fibsRec(length - 1, array.concat(array[array.length - 2] + array[array.length - 1]));
+    }
+}
 
-// }
+console.log(fibsRec(8));
