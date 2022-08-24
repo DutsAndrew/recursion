@@ -4,12 +4,12 @@ function mergeSort(array) {
 
   // divide
   const midPoint = Math.floor(array.length / 2);
-  const arrayLeft = mergeSort(array.slice(0, midPoint));
-  const arrayRight = mergeSort(array.slice(midPoint));
-  console.log(arrayLeft, arrayRight);
+  const arrayLeft = mergeSort(array.splice(0, midPoint));
+  const arrayRight = mergeSort(array);
 
   // conquer
   const sortedArray = [];
+
   while (arrayLeft.length > 0 && arrayRight.length > 0) {
     if (arrayLeft[0] < arrayRight[0]) {
       sortedArray.push(arrayLeft[0]);
@@ -19,6 +19,14 @@ function mergeSort(array) {
       arrayRight.shift();
     }
   }
+
+  if (arrayLeft.length > 0) {
+    sortedArray.push(...arrayLeft);
+  } else if (arrayRight.length > 0) {
+    sortedArray.push(...arrayRight);
+  }
+
+  return sortedArray;
 }
 
 console.log(mergeSort([912, 654, 321, 242, 888]))
