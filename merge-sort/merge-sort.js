@@ -4,8 +4,8 @@ function mergeSort(array) {
 
   // divide
   const midPoint = Math.floor(array.length / 2);
-  const arrayLeft = mergeSort(array.splice(0, midPoint));
-  const arrayRight = mergeSort(array);
+  const arrayLeft = mergeSort(array.slice(0, midPoint));
+  const arrayRight = mergeSort(array.slice(midPoint));
 
   // conquer
   const sortedArray = [];
